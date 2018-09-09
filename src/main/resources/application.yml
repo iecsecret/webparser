@@ -6,7 +6,7 @@ spring:
   application:
     name: webparser
 server:
-  port: 8081
+  port: 8099
 
 logging:
   file: ${user.home}/webparser.log

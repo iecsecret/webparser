@@ -94,7 +94,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>comodif.turkcell.gateway.Application</mainClass>
+                    <mainClass>com.volantx.webparser.ParserApplication</mainClass>
                     <executable>true</executable>
                 </configuration>
                 <executions>
