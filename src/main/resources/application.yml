@@ -18,10 +18,50 @@ logging:
 
 selenium:
   webdriver:
-    chrome: /home/kemal/Downloads/chromedriver
+    chrome: ${user.home}/Downloads/chromedriver
 
 snap:
   save:
-    path: /home/kemal
+    path: ${user.home}
     url: http://www.amazon.com/
 
+---
+spring:
+  profiles: dev
+
+selenium:
+  webdriver:
+    chrome: ${user.home}/chromedriver
+
+snap:
+  save:
+    path: ${user.home}
+    url: http://www.amazon.com/
+
+
+---
+spring:
+  profiles: test
+
+
+selenium:
+  webdriver:
+    chrome: /srv/vhosts/webscreen/driver/chromedriver
+
+snap:
+  save:
+    path: /srv/vhosts/webscreen/snapshots
+    url: http://www.amazon.com/
+
+---
+spring:
+  profiles: prod
+
+selenium:
+  webdriver:
+    chrome:
+
+snap:
+  save:
+    path:
+    url:
