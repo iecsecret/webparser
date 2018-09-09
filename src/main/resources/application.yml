@@ -47,8 +47,7 @@ selenium:
 
 snap:
   save:
-    path: /srv/vhosts/webscreen/snapshots
-    url: http://www.amazon.com/
+    path: /srv/vhosts/webscreen/snapshots/
 
 
 
@@ -66,4 +65,3 @@ selenium:
 snap:
   save:
     path:
-    url:
