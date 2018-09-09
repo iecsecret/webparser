@@ -29,20 +29,14 @@ snap:
 spring:
   profiles: dev
 
-selenium:
-  webdriver:
-    chrome: ${user.home}/chromedriver
-
-snap:
-  save:
-    path: ${user.home}
-    url: http://www.amazon.com/
 
 
 ---
 spring:
   profiles: test
 
+logging:
+  file: /srv/vhosts/webscreen/logs/webparser.log
 
 selenium:
   webdriver:
@@ -53,9 +47,14 @@ snap:
     path: /srv/vhosts/webscreen/snapshots
     url: http://www.amazon.com/
 
+
+
 ---
 spring:
   profiles: prod
+
+logging:
+  file:
 
 selenium:
   webdriver:
