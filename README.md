@@ -23,6 +23,8 @@ nohup java  -Xms512m -Xmx1024m -Dspring.profiles.active=test -jar webparser.jar 
 ##prod
 nohup java  -Xms512m -Xmx1024m -Dspring.profiles.active=prod -jar webparser.jar > /dev/null 2>&1 &
 
+##SWAGGER UI Access
+http://localhost:8099/swagger-ui.html
 
 ##API TEST
 
