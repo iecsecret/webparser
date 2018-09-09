@@ -1,0 +1,51 @@
+<configuration scan="true" scanPeriod="1 seconds">
+
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <springProperty name="LOG_LEVEL" source="logging.level.ROOT"/>
+
+    <springProperty name="LOG_FILE" source="logging.file"/>
+    <springProperty name="LOG_FILE_MAX_HISTORY" source="logging.file.maxHistory"/>
+
+    <springProperty name="LOG_PATTERN_FILE" source="logging.pattern.file"/>
+    <springProperty name="LOG_PATTERN_CONSOLE" source="logging.pattern.console"/>
+
+    <property name="DEFAULT_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <if condition='isDefined("LOG_FILE")'>
+        <then>
+            <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <encoder>
+                    <pattern>${LOG_PATTERN_FILE:-${DEFAULT_PATTERN}}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+                <file>${LOG_FILE}</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}</fileNamePattern>
+                    <maxHistory>${LOG_FILE_MAX_HISTORY:-90}</maxHistory>
+                </rollingPolicy>
+            </appender>
+        </then>
+    </if>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN_CONSOLE:-${DEFAULT_PATTERN}}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="${LOG_LEVEL:-INFO}">
+        <if condition='isDefined("LOG_FILE")'>
+            <then>
+                <appender-ref ref="FILE"/>
+            </then>
+        </if>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
