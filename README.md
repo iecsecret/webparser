@@ -8,7 +8,9 @@ This project taking screenshots from given urls.
 mvn clean install -Dspring.profiles.active=test
 or SPRING_PROFILES_ACTIVE as os variable
 
-## Install 
+## Install  Driver
+debian:
+wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.11/chromedriver_linux64.zip && sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/;
 
 
 ##run
