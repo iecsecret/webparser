@@ -32,7 +32,7 @@ spring:
 
 selenium:
   webdriver:
-    chrome: /Users/kamuranyilmaz/Development/IdeaProjects/youtubetracker/doc/selenium/driver/chrome/chromedriver
+    chrome: /Users/kamuranyilmaz/Development/IdeaProjects/trials/webparser/doc/driver/chromedriver
 
 
 ---
