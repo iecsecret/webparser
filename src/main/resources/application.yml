@@ -1,0 +1,27 @@
+info:
+  component:webparser
+spring:
+  config:
+    name: application
+  application:
+    name: webparser
+server:
+  port: 8081
+
+logging:
+  file: ${user.home}/home/kemal/webparser.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    ROOT: INFO
+
+selenium:
+  webdriver:
+    chrome: /home/kemal/Downloads/chromedriver
+
+snap:
+  save:
+    path: /home/kemal
+    url: http://www.amazon.com/
+
