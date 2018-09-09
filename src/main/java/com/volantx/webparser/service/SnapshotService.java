@@ -47,9 +47,6 @@ public class SnapshotService {
     @Value("${snap.save.path}")
     private String savePath;
 
-    @Value("${snap.save.url}")
-    private String saveUrl;
-
     Logger logger = LoggerFactory.getLogger(SnapshotService.class);
 
 
@@ -75,7 +72,7 @@ public class SnapshotService {
         ExecutorService executor = Executors.newFixedThreadPool(kafkaConsumerCount);
 
         for (int i = 1; i <= kafkaConsumerCount; i++) {
-            executor.submit(new SnapshotConsumer(props, saveUrl, savePath, i));
+            executor.submit(new SnapshotConsumer(props, savePath, i));
         }
 
     }
@@ -96,5 +93,10 @@ public class SnapshotService {
         return accepted.get();
     }
 
+
+    public int snapshotSync(List<String> urls) {
+        urls.stream().forEach(url->new SnapshotConsumer().takeSnap(url, 0, new File(savePath) ));
+        return 0;
+    }
 
 }

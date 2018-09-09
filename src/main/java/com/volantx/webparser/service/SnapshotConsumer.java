@@ -28,7 +28,11 @@ public class SnapshotConsumer implements Runnable {
 
     private int index;
 
-    public SnapshotConsumer(Map<String, Object> props, String saveUrl, String savePath, int index) {
+    public SnapshotConsumer() {
+
+    }
+
+    public SnapshotConsumer(Map<String, Object> props, String savePath, int index) {
 
         this.index = index;
 
@@ -46,16 +50,20 @@ public class SnapshotConsumer implements Runnable {
         ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(Integer.MAX_VALUE);
         consumerRecords.records(SnapshotService.TOPIC_NAME).forEach(record -> {
             String url = record.value();
-            WebDriver chromeDriver = SnapshotService.chromeDrivers.get(index);
-            chromeDriver.navigate().to(record.value());
-            chromeDriver.manage().window().maximize();
-            File scrFile = ((TakesScreenshot) chromeDriver).getScreenshotAs(OutputType.FILE);
-
-            try {
-                FileUtils.copyFile(scrFile, File.createTempFile("snap", ".png", savePathDir));
-            } catch (IOException e) {
-                logger.error("Createsnapshot failed for url:" + url);
-            }
+            takeSnap(url, index, savePathDir);
         });
+    }
+
+    public void takeSnap(String url, int idx, File savePathDir) {
+        WebDriver chromeDriver = SnapshotService.chromeDrivers.get(idx);
+        chromeDriver.navigate().to(url);
+        chromeDriver.manage().window().maximize();
+        File scrFile = ((TakesScreenshot) chromeDriver).getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(scrFile, File.createTempFile("snap", ".png", savePathDir));
+        } catch (IOException e) {
+            logger.error("Createsnapshot failed for url:" + url);
+        }
     }
 }

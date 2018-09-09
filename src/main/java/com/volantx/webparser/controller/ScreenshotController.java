@@ -22,4 +22,9 @@ public class ScreenshotController {
         return snapshotService.produceSnapshotTasks(urls);
     }
 
+    @RequestMapping(value = "/api/takeSnapshotSync", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody int takeSnapshotSync(@RequestBody List<String> urls) {
+        return snapshotService.snapshotSync(urls);
+    }
+
 }

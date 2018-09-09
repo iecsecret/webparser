@@ -23,8 +23,7 @@ selenium:
 
 snap:
   save:
-    path: ${user.home}
-    url: http://www.amazon.com/
+    path: ${user.home}/
 
 ---
 spring:
