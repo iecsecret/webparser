@@ -22,3 +22,15 @@ nohup java  -Xms512m -Xmx1024m -Dspring.profiles.active=test -jar webparser.jar 
 
 ##prod
 nohup java  -Xms512m -Xmx1024m -Dspring.profiles.active=prod -jar webparser.jar > /dev/null 2>&1 &
+
+
+##API TEST
+
+ curl -X POST \
+  http://localhost:8099/api/takeSnapshotSync \
+  -H 'content-type: application/json' \
+  -d '["http://www.amazon.com","http://www.google.com”]'
+  
+##About Kafka
+Place proper Kafka(AMQP) settings instead of embeded Kafka in order to benefit from MQ and concurrent execution.
+ 
