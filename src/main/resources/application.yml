@@ -43,7 +43,7 @@ logging:
 
 selenium:
   webdriver:
-    chrome: /srv/vhosts/webscreen/driver/chromedriver
+    chrome: /usr/bin/chromedriver
 
 snap:
   save:

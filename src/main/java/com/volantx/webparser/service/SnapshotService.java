@@ -58,7 +58,10 @@ public class SnapshotService {
         for (int i = 1; i <= kafkaConsumerCount; i++) {
 
             ChromeOptions ops = new ChromeOptions();
-            ops.addArguments("--headless","--disabled-gpu");
+            ops.addArguments("--headless");
+            ops.addArguments("--disabled-gpu");
+            ops.addArguments("--no-sandbox");
+
             ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().withVerbose(true).withWhitelistedIps("").build();
             ChromeDriver chromeDriver = new ChromeDriver(chromeDriverService, ops);
             chromeDrivers.add(chromeDriver);
