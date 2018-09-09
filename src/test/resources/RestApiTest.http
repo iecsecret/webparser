@@ -1,43 +1,8 @@
-POST http://127.0.0.1:8084/comments
+POST http://127.0.0.1:8099/api/takeSnapshot
 Content-Type: application/json
 
-{
-    "tenantId": "1",
-    "domainId": "1",
-    "body": "syorum dfdsf sdfvdsgd http test"
-  }
+["http://www.amazon.com/" ]
 
 ###
+GET http://127.0.0.1:8099/api/takeSnapshot
 
-PUT http://127.0.0.1:8084/comments
-Content-Type: application/json
-
-{
-  "tenantId": "1",
-  "domainId": "1",
-  "status": "PASSIVE",
-  "identifier": "7a1f5200-a24b-11e8-9abc-89cdb4b2981e",
-  "body": "syorum dfdsf sdfvdsgd http test",
-  "extras": {
-    "created_by": "anonymousUser",
-    "created_date": "2018-08-17 21:29:29.005+0300"
-  }
-}
-
-###
-GET http://127.0.0.1:8084/comments?domainId=1&limit=5
-tenantId: 1
-
-###
-GET http://127.0.0.1:8084/comments?domainId=1&limit=5&from=839ad750-a24b-11e8-9abc-89cdb4b2981e
-tenantId: 1
-
-
-###
-GET http://127.0.0.1:8084/comments/domain/1/status/ACTIVE/839ad750-a24b-11e8-9abc-89cdb4b2981e
-tenantId: 1
-
-###
-
-DELETE http://127.0.0.1:8084/comments/domain/1/status/ACTIVE/839ad750-a24b-11e8-9abc-89cdb4b2981e
-tenantId: 1

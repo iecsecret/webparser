@@ -1,10 +1,11 @@
-info:
-  component:webparser
+info.component: webparser
+
 spring:
   config:
     name: application
   application:
     name: webparser
+
 server:
   port: 8099
 
@@ -29,6 +30,9 @@ snap:
 spring:
   profiles: dev
 
+selenium:
+  webdriver:
+    chrome: /Users/kamuranyilmaz/Development/IdeaProjects/youtubetracker/doc/selenium/driver/chrome/chromedriver
 
 
 ---
