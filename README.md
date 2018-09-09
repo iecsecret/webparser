@@ -35,4 +35,10 @@ http://localhost:8099/swagger-ui.html
   
 ##About Kafka
 Place proper Kafka(AMQP) settings instead of embeded Kafka in order to benefit from MQ and concurrent execution.
+
+## scaling to Millions
+ - Distributed AMQP (Kafka) for messaging
+ - Auto scalable microservices architecture on kubernetes or openshift
+ - Non-blocking consumer-producer communications
+ - Reactive programming (webflux)     
  
