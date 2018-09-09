@@ -8,6 +8,7 @@
     <artifactId>webparser</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>webparser</name>
+    <description>Taking screenshots from given urls</description>
 
 
     <parent>
